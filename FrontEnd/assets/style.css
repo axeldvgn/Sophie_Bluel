@@ -2,19 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+* {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -91,7 +79,10 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
-
+a {
+	color: #000;
+	text-decoration: none;
+}
 
 
 
@@ -107,9 +98,6 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
-}
-nav a {
-	text-decoration: none;
 }
 li:hover {
 	color: #B1663C;
@@ -304,4 +292,67 @@ footer nav ul {
 #login a {
 	text-align: center;
 	color: #000;
+}
+
+
+
+
+
+
+/* ===== Mode édition ===== */
+
+[hidden] {
+	display: none !important;
+}
+#edit-banner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	width: 100%;	
+	padding: 14px 0;
+	color: #fff;
+}
+#edit-banner,
+#edit-banner * {
+	background-color: #000;
+}
+
+.portfolio-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	margin-bottom: 1em;
+}
+#portfolio .portfolio-title h2 {
+	margin-bottom: 0;
+}
+.fa-solid .fa-pen-to-square {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #000;
+	text-decoration: none;
+}
+
+.password-view {
+	position: relative;
+	display: flex;
+}
+.password-view input {
+	flex: 1;
+	padding-right: 90px;
+}
+#login #toggle-password {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #1D6154;
+	font-weight: 700;
+	cursor: pointer;
+}
+#toggle-password:hover {
+	color: #B1663C;
 }

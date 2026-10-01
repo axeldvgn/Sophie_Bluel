@@ -25,14 +25,17 @@
 </header>
 <main>
 	<form id="login" action="#" method="post">
-			<h2>Log In</h2>
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="password">Mot de passe</label>
+		<h2>Log In</h2>
+		<label for="email">Email</label>
+		<input type="email" name="email" id="email">
+		<label for="password">Mot de passe</label>
+		<div class="password-view">
 			<input type="password" name="password" id="password">
-			<input type="submit" value="Se connecter">
-			<a href="#">Mot de passe oublié</a>
-		</form>
+			<button type="button" id="toggle-password" aria-label="Afficher le mot de passe">Afficher</button>
+		</div>
+		<input type="submit" value="Se connecter">
+		<a href="#">Mot de passe oublié</a>
+	</form>
 </main>
 <footer>
 	<nav>
