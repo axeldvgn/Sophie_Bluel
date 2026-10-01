@@ -9,17 +9,17 @@ form.addEventListener('submit', (event) => {
 
 /* Fonction de connexion */
 async function login(email, password) {
-    const response = await fetch('http://localhost:5678/api/users/login', { 
+    const connect = await fetch('http://localhost:5678/api/users/login', { 
         method: 'POST', 
         headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify({email, password}) });
 
     /*gerer les erreurs de connexion */
-    if (response.ok) {
-    const data = await response.json();
+    if (connect.ok) {
+    const data = await connect.json();
     localStorage.setItem('token', data.token);
     window.location.href = 'index.html';
     } else {
-    alert('Erreur de connexion : ' + response.status);
-    }};
-
+    alert('Erreur de connexion : ' + connect.status);
+    }
+}
