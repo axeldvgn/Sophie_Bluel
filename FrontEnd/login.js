@@ -8,8 +8,9 @@ form.addEventListener('submit', (event) => {
 });
 
 /* Fonction de connexion */
+import { api } from "./config.js";
 async function login(email, password) {
-    const connect = await fetch('http://localhost:5678/api/users/login', { 
+    const connect = await fetch(`${api}/users/login`, { 
         method: 'POST', 
         headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify({email, password}) });
@@ -20,6 +21,27 @@ async function login(email, password) {
     localStorage.setItem('token', data.token);
     window.location.href = 'index.html';
     } else {
-    alert('Erreur de connexion : ' + connect.status);
+        let errorParagraph = document.getElementById('login-error');
+        if (!errorParagraph) {
+            errorParagraph = document.createElement('p');
+            errorParagraph.id = 'login-error';
+            const submitButton = document.querySelector('#login input[type="submit"]');
+            submitButton.before(errorParagraph);
+        }
+        errorParagraph.textContent = 'Erreur dans l’identifiant ou le mot de passe';
     }
 }
+
+/* Afficher / cacher le mot de passe */
+const passwordInput = document.getElementById('password');
+const togglePasswordButton = document.getElementById('toggle-password');
+
+togglePasswordButton.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePasswordButton.textContent = 'Cacher';
+    } else {
+        passwordInput.type = 'password';
+        togglePasswordButton.textContent = 'Afficher';
+    }
+});
