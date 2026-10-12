@@ -1,47 +1,74 @@
-import { api } from "./config.js";
+import { getWorks, getCategories } from "./config.js";
 
 /* créer les balises filtre et galerie */
-const portfolio = document.getElementById('portfolio');
+// const portfolio = document.getElementById('portfolio');
 
-const filterList = document.createElement('ul');
-filterList.classList.add('filter');
+// const filterList = document.createElement('ul');
+// filterList.classList.add('filter');
 
-const gallery = document.createElement('div');
-gallery.classList.add('gallery');
+// const gallery = document.createElement('div');
+// gallery.classList.add('gallery');
 
-portfolio.appendChild(filterList);
-portfolio.appendChild(gallery);
+// portfolio.appendChild(filterList);
+// portfolio.appendChild(gallery);
 
 
-/* récupérer les données de l'API */
-async function getWorks() {
-    const response = await fetch(`${api}/works`);
-    return response.json();
-}
+const filterList = document.querySelector('[rel="filter"]');
+const gallery = document.querySelector('[rel="gallery"]');
 
-async function getCategories() {
-    const response = await fetch(`${api}/categories`);
-    return response.json();
-}
+
 
 /* afficher la galerie */
+// function displayWorks(works) {
+//     gallery.innerHTML = '';
+
+//     works.forEach(work => {
+//         const figure = document.createElement('figure');
+//         const img = document.createElement('img');
+//         const titleimg = document.createElement('figcaption');
+
+//         img.src = work.imageUrl;
+//         img.alt = work.title;
+//         titleimg.textContent = work.title;
+
+//         figure.appendChild(img);
+//         figure.appendChild(titleimg);
+//         gallery.appendChild(figure);
+//     });
+// }
+
+
 function displayWorks(works) {
+
+    // reset gallery content
     gallery.innerHTML = '';
 
-    works.forEach(work => {
-        const figure = document.createElement('figure');
-        const img = document.createElement('img');
-        const titleimg = document.createElement('figcaption');
-
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        titleimg.textContent = work.title;
-
-        figure.appendChild(img);
-        figure.appendChild(titleimg);
-        gallery.appendChild(figure);
-    });
+    // display each work in the gallery
+    works.forEach(work => displayWork(work));
 }
+
+function displayWork(work) {
+
+    const title = work.title;
+    const imageUrl = work.imageUrl;
+
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = title;
+
+    const caption = document.createElement('figcaption');
+    caption.textContent = title;
+
+    const figure = document.createElement('figure');
+    figure.title = title;
+    figure.appendChild(img);
+    figure.appendChild(caption);
+
+    // append the figure to the gallery
+    gallery.appendChild(figure);
+}
+
+
 
 /* créer un bouton de filtre */
 function createFilterButton(name, categoryId, works) {
@@ -81,12 +108,20 @@ function displayFilters(categories, works) {
 }
 
 /* lancement */
-async function init() {
+// async function init() {
+//     const works = await getWorks();
+//     const categories = await getCategories();
+
+//     displayWorks(works);
+//     displayFilters(categories, works);
+// }
+
+// init();
+
+(async () => {
     const works = await getWorks();
     const categories = await getCategories();
 
     displayWorks(works);
     displayFilters(categories, works);
-}
-
-init();
+})();

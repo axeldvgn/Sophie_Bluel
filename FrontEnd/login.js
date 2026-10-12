@@ -8,17 +8,13 @@ form.addEventListener('submit', (event) => {
 });
 
 /* Fonction de connexion */
-import { api } from "./config.js";
+import { postLogin } from "./config.js";
 async function login(email, password) {
-    const connect = await fetch(`${api}/users/login`, { 
-        method: 'POST', 
-        headers: {'Content-Type': 'application/json'}, 
-        body: JSON.stringify({email, password}) });
+    const connect = await postLogin(email, password);
 
     /*gerer les erreurs de connexion */
-    if (connect.ok) {
-    const data = await connect.json();
-    localStorage.setItem('token', data.token);
+    if (connect && connect.token) {
+    localStorage.setItem('token', connect.token);
     window.location.href = 'index.html';
     } else {
         let errorParagraph = document.getElementById('login-error');
