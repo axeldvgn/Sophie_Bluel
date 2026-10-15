@@ -1,45 +1,74 @@
 const api = 'http://localhost:5678/api';
 
-/* raccourcis pour appeler l'API */
+/* déconnexion */
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+}
+
+/* vérification erreur get */
 async function get(url) {
     try {
         const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    }
-    catch (error) {
-        console.error('Error fetching data:', error);
+        if (!response.ok) return [];
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur GET :', error);
         return [];
     }
 }
 
-function post(url, data) {
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .catch(error => {
-        console.error('Error posting data:', error);
-        return null;
+/* ajoute le token, déconnecte si 401 */
+async function authFetch(url, options = {}) {
+    const response = await fetch(url, {
+        ...options,
+        headers: { ...options.headers, 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     });
-}
-
-/* récupérer les données de l'API */
-async function getWorks() {
-    return await get(`${api}/works`);
-}
-
-async function getCategories() {
-    return await get(`${api}/categories`);
+    if (response.status === 401) logout();
+    return response.ok;
 }
 
 /* connexion */
+
 async function postLogin(email, password) {
-    return await post(`${api}/users/login`, { email, password });
+    try {
+        const response = await fetch(`${api}/users/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur connexion :', error);
+        return null;
+    }
 }
 
-export { api, get, post, getWorks, getCategories, postLogin };
+/* récupérer/modifier les travaux */
+
+function getWorks() {
+    return get(`${api}/works`);
+}
+
+function getCategories() {
+    return get(`${api}/categories`);
+}
+
+function addWork(formData) {
+    return authFetch(`${api}/works`, { method: 'POST', body: formData });
+}
+
+function deleteWork(id) {
+    return authFetch(`${api}/works/${id}`, { method: 'DELETE' });
+}
+
+/* chargées une seule fois pour tout le site */
+let [works, categories] = await Promise.all([getWorks(), getCategories()]);
+
+/* recharger les travaux après un ajout ou une suppression */
+async function refreshWorks() {
+    works = await getWorks();
+    return works;
+}
+
+export { logout, postLogin, addWork, deleteWork, works, categories, refreshWorks };
