@@ -1,4 +1,6 @@
 /* fonctions fetch utilisées par works.js et categories.js */
+import { getToken } from '../auth/token.js';
+import { logout } from '../auth/logout.js';
 
 /* GET qui renvoie [] en cas d'erreur */
 export async function getJson(url) {
@@ -25,5 +27,20 @@ export async function postJson(url, data) {
     } catch (error) {
         console.error('Erreur POST :', error);
         return null;
+    }
+}
+
+/* ajoute le token, déconnecte si 401 (token expiré) ; renvoie true si la requête a réussi */
+export async function authFetch(url, options = {}) {
+    try {
+        const response = await fetch(url, {
+            ...options,
+            headers: { ...options.headers, 'Authorization': `Bearer ${getToken()}` }
+        });
+        if (response.status === 401) logout();
+        return response.ok;
+    } catch (error) {
+        console.error('Erreur requête :', error);
+        return false;
     }
 }

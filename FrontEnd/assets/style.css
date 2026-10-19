@@ -309,3 +309,83 @@ footer nav ul {
 .edit-gallery i {
 	margin-right: 10px;
 }
+
+
+/* modale */
+.modal {
+	margin: auto;
+	width: 630px;
+	max-width: calc(100% - 32px);
+	border-radius: 10px;
+	background: #fff;
+}
+.modal::backdrop {
+	background: rgba(0, 0, 0, 0.3);
+}
+.modal-content {
+	position: relative;
+	text-align: center;
+	padding: 70px;
+}
+.modal-close,
+.modal-back {
+	position: absolute;
+	top: 25px;
+	font-size: 20px;
+}
+.modal-close {
+	right: 30px;
+}
+.modal-back {
+	left: 30px;
+}
+.modal h3 {
+	font-size: 26px;
+	margin-bottom: 45px;
+}
+.modal-add {
+	padding: 10px 50px;
+	border-radius: 60px;
+	background: #1D6154;
+	color: #fff;
+	font-family: 'Syne', sans-serif;
+	font-weight: 700;
+}
+.modal-add:hover {
+	background: #0E2F28;
+}
+.modal-add:disabled {
+	background: #A7A7A7;
+	cursor: not-allowed;
+}
+.modal-gallery {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 30px 10px;
+	margin-bottom: 30px;
+}
+.modal-gallery figure {
+	position: relative;
+}
+.modal-gallery img {
+	display: block;
+	width: 100%;
+}
+.modal-delete {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	padding: 5px;
+	border-radius: 5px;
+	background: #000;
+	color: #fff;
+}
+.modal-delete:disabled {
+	opacity: 0.5;
+	cursor: wait;
+}
+.modal-separator {
+	align-self: stretch;
+	border-top: 1px solid #B3B3B3;
+	margin: 40px;
+}

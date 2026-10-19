@@ -1,6 +1,19 @@
-/* travaux : liste partagée, chargée depuis l'API */
+/* travaux : liste partagée + suppression sur l'API */
 import { API } from '../config/config.js';
-import { getJson } from './http.js';
+import { getJson, authFetch } from './http.js';
 
-/* chargés une fois au démarrage */
+/* événement envoyé sur document à chaque changement de la liste */
+export const WORKS_UPDATED = 'works-updated';
+
+/* chargés une fois au démarrage, puis rechargés par refreshWorks() */
 export let works = await getJson(API.works);
+
+/* recharger les travaux et prévenir les galeries qu'elles doivent se redessiner */
+export async function refreshWorks() {
+    works = await getJson(API.works);
+    document.dispatchEvent(new CustomEvent(WORKS_UPDATED));
+}
+
+export function deleteWork(id) {
+    return authFetch(`${API.works}/${id}`, { method: 'DELETE' });
+}
