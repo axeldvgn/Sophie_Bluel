@@ -11,6 +11,7 @@ d'OpenClassrooms.
 - Mode édition et déconnexion
 - Modale d'administration : suppression des projets
 - Modale d'administration : ajout d'un projet
+- Version mobile
 
 ## Lancer le projet
 

@@ -454,3 +454,40 @@ footer nav ul {
 	clip: rect(0 0 0 0);
 	white-space: nowrap;
 }
+
+
+/* responsive */
+@media (max-width: 900px) {
+	#introduction {
+		flex-direction: column;
+		gap: 30px;
+	}
+	#introduction article {
+		padding-right: 0;
+	}
+	.gallery {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	#contact {
+		width: 100%;
+	}
+}
+@media (max-width: 600px) {
+	header {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+	.filter {
+		flex-wrap: wrap;
+	}
+	.gallery {
+		grid-template-columns: 1fr;
+	}
+	.modal-content {
+		padding: 50px 20px;
+	}
+	.modal-gallery {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
