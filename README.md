@@ -1,20 +1,37 @@
-# Portfolio-architecte-sophie-bluel
+# Portfolio de Sophie Bluel, architecte d'intérieur
 
-Code du projet 6 d'intégrateur web.
+Site vitrine avec une galerie de projets. Projet 6 du parcours Intégrateur web
+d'OpenClassrooms.
 
-## Architecture
+## Fonctionnalités
 
-Ce repo git contient les 2 briques logicielles du projet 
-- Frontend
-- Backend
+- Galerie des projets chargée depuis l'API
 
-## Pour le lancer le code
-### Backend
-Ouvrir le dossier Backend et lire le README.md
+## Lancer le projet
 
-### Frontend
-Ouvrir le dossier Frontend et lancer liveserver de votre IDE
- 
-## Astuce
- 
-Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème
+Prérequis : Node.js.
+
+1. Backend, dans un terminal :
+
+   ```bash
+   cd Backend
+   npm install
+   npm start
+   ```
+
+   L'API répond sur `http://localhost:5678/api` (documentation Swagger sur
+   `http://localhost:5678/api-docs`).
+
+2. Front : servir le dossier `FrontEnd` avec un serveur local (par exemple
+   l'extension Live Server de VS Code), puis ouvrir `index.html`.
+
+## Organisation du JavaScript
+
+Modules ES rangés par rôle, dans `FrontEnd/assets/js/` :
+
+| Dossier | Rôle |
+|---|---|
+| `pages/` | point d'entrée de chaque page : `home.js` (index.html) |
+| `config/` | adresses de l'API |
+| `common/` | appels à l'API (`http.js`) et données partagées (`works.js`) |
+| `gallery/` | galerie des projets |
