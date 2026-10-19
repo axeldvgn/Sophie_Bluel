@@ -6,6 +6,7 @@ d'OpenClassrooms.
 ## Fonctionnalités
 
 - Galerie des projets chargée depuis l'API
+- Filtres par catégorie
 
 ## Lancer le projet
 
@@ -33,5 +34,5 @@ Modules ES rangés par rôle, dans `FrontEnd/assets/js/` :
 |---|---|
 | `pages/` | point d'entrée de chaque page : `home.js` (index.html) |
 | `config/` | adresses de l'API |
-| `common/` | appels à l'API (`http.js`) et données partagées (`works.js`) |
-| `gallery/` | galerie des projets |
+| `common/` | appels à l'API (`http.js`) et données partagées (`works.js`, `categories.js`) |
+| `gallery/` | galerie des projets et filtres par catégorie |

@@ -2,5 +2,6 @@
 const BASE_URL = 'http://localhost:5678/api';
 
 export const API = {
-    works: `${BASE_URL}/works`
+    works: `${BASE_URL}/works`,
+    categories: `${BASE_URL}/categories`
 };
