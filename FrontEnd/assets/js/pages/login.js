@@ -1,5 +1,7 @@
 /* interface de la page de connexion (login.html) */
 import { initLoginForm } from '../auth/login.js';
+import { isLoggedIn } from '../auth/token.js';
+import { initLogoutLink } from '../auth/logout.js';
 
 /* bouton "Afficher / Cacher" du mot de passe */
 function initPasswordToggle() {
@@ -19,3 +21,4 @@ function initPasswordToggle() {
 
 initLoginForm();
 initPasswordToggle();
+if (isLoggedIn()) initLogoutLink();

@@ -8,6 +8,7 @@ d'OpenClassrooms.
 - Galerie des projets chargée depuis l'API
 - Filtres par catégorie
 - Page de connexion
+- Mode édition et déconnexion
 
 ## Lancer le projet
 
@@ -39,4 +40,4 @@ Modules ES rangés par rôle, dans `FrontEnd/assets/js/` :
 | `config/` | adresses de l'API |
 | `common/` | appels à l'API (`http.js`) et données partagées (`works.js`, `categories.js`) |
 | `gallery/` | galerie des projets et filtres par catégorie |
-| `auth/` | connexion, token |
+| `auth/` | connexion, token et déconnexion |
