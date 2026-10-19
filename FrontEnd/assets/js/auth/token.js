@@ -1,0 +1,17 @@
+/* gestion du token de connexion stocké dans le navigateur */
+
+export function getToken() {
+    return localStorage.getItem('token');
+}
+
+export function saveToken(token) {
+    localStorage.setItem('token', token);
+}
+
+export function removeToken() {
+    localStorage.removeItem('token');
+}
+
+export function isLoggedIn() {
+    return Boolean(getToken());
+}

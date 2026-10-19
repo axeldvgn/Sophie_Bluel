@@ -7,6 +7,7 @@ d'OpenClassrooms.
 
 - Galerie des projets chargée depuis l'API
 - Filtres par catégorie
+- Page de connexion
 
 ## Lancer le projet
 
@@ -26,13 +27,16 @@ Prérequis : Node.js.
 2. Front : servir le dossier `FrontEnd` avec un serveur local (par exemple
    l'extension Live Server de VS Code), puis ouvrir `index.html`.
 
+Compte de test : `sophie.bluel@test.tld` / `S0phie`.
+
 ## Organisation du JavaScript
 
 Modules ES rangés par rôle, dans `FrontEnd/assets/js/` :
 
 | Dossier | Rôle |
 |---|---|
-| `pages/` | point d'entrée de chaque page : `home.js` (index.html) |
+| `pages/` | point d'entrée de chaque page : `home.js` (index.html), `login.js` (login.html) |
 | `config/` | adresses de l'API |
 | `common/` | appels à l'API (`http.js`) et données partagées (`works.js`, `categories.js`) |
 | `gallery/` | galerie des projets et filtres par catégorie |
+| `auth/` | connexion, token |

@@ -2,6 +2,7 @@
 const BASE_URL = 'http://localhost:5678/api';
 
 export const API = {
+    login: `${BASE_URL}/users/login`,
     works: `${BASE_URL}/works`,
     categories: `${BASE_URL}/categories`
 };
