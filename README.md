@@ -10,6 +10,7 @@ d'OpenClassrooms.
 - Page de connexion
 - Mode édition et déconnexion
 - Modale d'administration : suppression des projets
+- Modale d'administration : ajout d'un projet
 
 ## Lancer le projet
 
@@ -42,4 +43,4 @@ Modules ES rangés par rôle, dans `FrontEnd/assets/js/` :
 | `common/` | appels à l'API (`http.js`) et données partagées (`works.js`, `categories.js`) |
 | `gallery/` | galerie des projets et filtres par catégorie |
 | `auth/` | connexion, token et déconnexion |
-| `modal/` | modale d'administration : affichage, miniatures, suppression |
+| `modal/` | modale d'administration : affichage, miniatures, suppression, ajout |

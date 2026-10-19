@@ -58,7 +58,28 @@
 					<h3 class="modal-title" id="modal-title">Galerie photo</h3>
 					<div class="modal-gallery" data-js="modal-gallery"></div>
 					<hr class="modal-separator">
+					<button type="button" class="modal-add" data-js="modal-add">Ajouter une photo</button>
 				</div>
+				<form id="modal-form" data-js="modal-form" hidden>
+					<button type="button" class="modal-back" data-js="modal-back" aria-label="Retour">
+						<i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+					</button>
+					<h3 class="modal-title">Ajout photo</h3>
+
+					<label for="image" class="upload-zone">
+						<i class="fa-regular fa-image" aria-hidden="true"></i>
+						<span class="upload-button">+ Ajouter photo</span>
+						<span class="upload-info">jpg, png : 4mo max</span>
+						<input type="file" accept="image/png, image/jpeg" id="image" name="image" class="visually-hidden" required>
+					</label>
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title" required>
+					<label for="category">Catégorie</label>
+					<select name="category" id="category" required></select>
+					<p class="form-error" data-js="form-error" role="alert" hidden></p>
+					<hr class="modal-separator">
+					<button type="submit" class="modal-add" disabled>Valider</button>
+				</form>
 			</div>
 		</dialog>
 	</section>
