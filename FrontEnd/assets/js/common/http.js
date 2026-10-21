@@ -2,15 +2,15 @@
 import { getToken } from '../auth/token.js';
 import { logout } from '../auth/logout.js';
 
-/* GET qui renvoie [] en cas d'erreur */
+/* GET qui renvoie null en cas d'erreur (serveur éteint ou réponse en erreur) */
 export async function getJson(url) {
     try {
         const response = await fetch(url);
-        if (!response.ok) return [];
+        if (!response.ok) return null;
         return await response.json();
     } catch (error) {
         console.error('Erreur GET :', error);
-        return [];
+        return null;
     }
 }
 

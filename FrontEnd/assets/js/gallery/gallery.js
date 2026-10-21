@@ -7,6 +7,17 @@ export function displayWorks(works) {
     works.forEach(work => gallery.appendChild(createWorkFigure(work)));
 }
 
+/* message à la place de la galerie (ex. API éteinte) */
+export function displayGalleryError(message) {
+    const gallery = document.querySelector('[data-js="gallery"]');
+    const error = document.createElement('p');
+
+    error.className = 'gallery-error';
+    error.setAttribute('role', 'alert');
+    error.textContent = message;
+    gallery.replaceChildren(error);
+}
+
 /* image d'un travail (utilisée aussi par la galerie de la modale) */
 export function createWorkImage(work) {
     const img = document.createElement('img');

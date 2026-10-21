@@ -2,4 +2,4 @@
 import { API } from '../config/config.js';
 import { getJson } from './http.js';
 
-export const categories = await getJson(API.categories);
+export const categories = await getJson(API.categories) ?? [];

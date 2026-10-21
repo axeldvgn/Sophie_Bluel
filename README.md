@@ -1,47 +1,20 @@
-# Portfolio de Sophie Bluel, architecte d'intérieur
+# Portfolio-architecte-sophie-bluel
 
-Site vitrine avec une galerie de projets. Projet 6 du parcours Intégrateur web
-d'OpenClassrooms.
+Code du projet 6 d'intégrateur web.
 
-## Fonctionnalités
+## Architecture
 
-- Galerie des projets chargée depuis l'API
-- Filtres par catégorie
-- Page de connexion
-- Mode édition et déconnexion
-- Modale d'administration : suppression des projets
-- Modale d'administration : ajout d'un projet
-- Version mobile
+Ce repo git contient les 2 briques logicielles du projet 
+- Frontend
+- Backend
 
-## Lancer le projet
+## Pour le lancer le code
+### Backend
+Ouvrir le dossier Backend et lire le README.md
 
-Prérequis : Node.js.
-
-1. Backend, dans un terminal :
-
-   ```bash
-   cd Backend
-   npm install
-   npm start
-   ```
-
-   L'API répond sur `http://localhost:5678/api` (documentation Swagger sur
-   `http://localhost:5678/api-docs`).
-
-2. Front : servir le dossier `FrontEnd` avec un serveur local (par exemple
-   l'extension Live Server de VS Code), puis ouvrir `index.html`.
-
-Compte de test : `sophie.bluel@test.tld` / `S0phie`.
-
-## Organisation du JavaScript
-
-Modules ES rangés par rôle, dans `FrontEnd/assets/js/` :
-
-| Dossier | Rôle |
-|---|---|
-| `pages/` | point d'entrée de chaque page : `home.js` (index.html), `login.js` (login.html) |
-| `config/` | adresses de l'API |
-| `common/` | appels à l'API (`http.js`) et données partagées (`works.js`, `categories.js`) |
-| `gallery/` | galerie des projets et filtres par catégorie |
-| `auth/` | connexion, token et déconnexion |
-| `modal/` | modale d'administration : affichage, miniatures, suppression, ajout |
+### Frontend
+Ouvrir le dossier Frontend et lancer liveserver de votre IDE
+ 
+## Astuce
+ 
+Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème

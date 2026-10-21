@@ -6,11 +6,16 @@ import { getJson, authFetch } from './http.js';
 export const WORKS_UPDATED = 'works-updated';
 
 /* chargés une fois au démarrage, puis rechargés par refreshWorks() */
-export let works = await getJson(API.works);
+const initialWorks = await getJson(API.works);
 
-/* recharger les travaux et prévenir les galeries qu'elles doivent se redessiner */
+/* true si l'API n'a pas répondu au chargement de la page */
+export const worksUnavailable = initialWorks === null;
+export let works = initialWorks ?? [];
+
+/* recharger les travaux et prévenir les galeries qu'elles doivent se redessiner ;
+   si le rechargement échoue, l'ancienne liste est gardée */
 export async function refreshWorks() {
-    works = await getJson(API.works);
+    works = await getJson(API.works) ?? works;
     document.dispatchEvent(new CustomEvent(WORKS_UPDATED));
 }
 

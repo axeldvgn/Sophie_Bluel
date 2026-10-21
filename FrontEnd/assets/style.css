@@ -170,9 +170,20 @@ nav li {
 	color: #1D6154;
 	font-weight: 700;
 }
+.filter button:hover,
 .filter button.active {
 	color: #f7f7f7;
 	background-color: #1D6154;
+}
+.filter button:focus-visible {
+	outline: 2px solid #B1663C;
+	outline-offset: -4px;
+	border-radius: 20px;
+}
+.gallery-error {
+	grid-column: 1 / -1;
+	text-align: center;
+	color: red;
 }
 .gallery {
 	display: grid;
