@@ -1,10 +1,10 @@
 /* interface de la page d'accueil (index.html) */
-import { works, worksUnavailable, WORKS_UPDATED } from '../common/works.js';
-import { categories } from '../common/categories.js';
+import { works, WORKS_UPDATED } from '../common/works.js';
+import { displayGalleryOrError } from '../common/error.js';
 import { isLoggedIn } from '../auth/token.js';
 import { initLogoutLink } from '../auth/logout.js';
-import { displayWorks, displayGalleryError } from '../gallery/gallery.js';
-import { displayFilters, resetFilters } from '../gallery/filters.js';
+import { displayWorks } from '../gallery/gallery.js';
+import { resetFilters } from '../gallery/filters.js';
 import { initModal } from '../modal/modal.js';
 
 /* mode édition : bannière et bouton "modifier" visibles, filtres cachés */
@@ -14,13 +14,7 @@ function showEditMode() {
     document.querySelector('.filter').hidden = true;
 }
 
-/* API éteinte : message à la place de la galerie, pas de filtres */
-if (worksUnavailable) {
-    displayGalleryError('Impossible de charger les projets, réessayez plus tard.');
-} else {
-    displayWorks(works);
-    displayFilters(categories);
-}
+displayGalleryOrError();
 
 /* redessiner après un ajout ou une suppression */
 document.addEventListener(WORKS_UPDATED, () => {

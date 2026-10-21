@@ -1,6 +1,6 @@
 /* connexion : envoi des identifiants, sauvegarde du token, message d'erreur */
 import { API } from '../config/config.js';
-import { postJson } from '../common/http.js';
+import { postJson } from '../common/function.js';
 import { saveToken } from './token.js';
 
 function showLoginError(message) {

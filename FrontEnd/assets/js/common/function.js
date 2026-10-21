@@ -1,4 +1,4 @@
-/* fonctions fetch utilisées par works.js et categories.js */
+/* fonctions fetch utilisées par works.js, categories.js et auth/login.js */
 import { getToken } from '../auth/token.js';
 import { logout } from '../auth/logout.js';
 

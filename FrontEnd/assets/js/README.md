@@ -10,9 +10,10 @@ HTML charge un seul fichier d'entrée dans `pages/`, qui importe le reste.
 | `pages/` | `home.js` | point d'entrée de `index.html` : galerie, filtres, mode édition, message si l'API ne répond pas |
 | | `login.js` | point d'entrée de `login.html` : formulaire de connexion, bouton Afficher / Cacher du mot de passe |
 | `config/` | `config.js` | adresses de l'API (un seul endroit à modifier si le serveur change) |
-| `common/` | `http.js` | fonctions `fetch` : `getJson`, `postJson`, `authFetch` (ajoute le token, déconnecte sur 401) |
+| `common/` | `function.js` | fonctions `fetch` : `getJson`, `postJson`, `authFetch` (ajoute le token, déconnecte sur 401) |
 | | `works.js` | liste des travaux partagée, ajout et suppression, événement `works-updated` |
 | | `categories.js` | liste des catégories, chargée une seule fois |
+| | `error.js` | affiche la galerie et les filtres, ou un message si l'API ne répond pas |
 | `gallery/` | `gallery.js` | affichage de la galerie principale (et image réutilisée par la modale) |
 | | `filters.js` | boutons de filtre par catégorie |
 | `auth/` | `token.js` | lecture, sauvegarde et suppression du token ; vérifie son expiration |
@@ -29,8 +30,8 @@ HTML charge un seul fichier d'entrée dans `pages/`, qui importe le reste.
   au chargement du module (`await` au premier niveau). Les pages qui les
   importent attendent donc que les données soient là.
 - **API éteinte** : `getJson` renvoie `null` si la requête échoue.
-  `works.js` expose alors `worksUnavailable = true` et la page d'accueil
-  affiche un message à la place de la galerie et des filtres.
+  `works.js` expose alors `worksUnavailable = true` et `error.js` affiche
+  un message à la place de la galerie et des filtres.
 - **Mise à jour des galeries** : après un ajout ou une suppression,
   `refreshWorks()` recharge la liste puis envoie l'événement `works-updated`
   sur `document`. La galerie principale et celle de la modale l'écoutent

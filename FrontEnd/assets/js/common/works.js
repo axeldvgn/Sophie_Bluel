@@ -1,6 +1,6 @@
 /* travaux : liste partagée + ajout / suppression sur l'API */
 import { API } from '../config/config.js';
-import { getJson, authFetch } from './http.js';
+import { getJson, authFetch } from './function.js';
 
 /* événement envoyé sur document à chaque changement de la liste */
 export const WORKS_UPDATED = 'works-updated';
