@@ -161,14 +161,14 @@ nav li {
 }
 .filter li {
 	display: flex;
-	border: 2px solid #1D6154;
-	border-radius: 20px;
 	overflow: hidden;
 }
 .filter button {
 	padding: 5px 15px;
 	color: #1D6154;
 	font-weight: 700;
+	border: 2px solid #1D6154;
+	border-radius: 20px;
 }
 .filter button:hover,
 .filter button.active {
